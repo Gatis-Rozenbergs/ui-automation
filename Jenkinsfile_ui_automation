@@ -10,34 +10,34 @@ pipeline {
             }
         }
 
-        stage('staging') {
+        stage('deploy-staging') {
             steps {
                 script {
-                    deploy("dev")
+                    deploy("staging")
                 } 
             }
         }
 
-        stage('staging') {
+        stage('stage-staging') {
             steps {
                 script {
-                    stage("dev")
+                    stage("staging")
                 } 
             }
         }
 
-        stage('production') {
+        stage('deploy-production') {
             steps {
                 script {
-                    deploy("int")
+                    deploy("production")
                 } 
             }
         }
 
-        stage('production') {
+        stage('stage-production') {
             steps {
                 script {
-                    stage("int")
+                    stage("production")
                 } 
             }
         }
@@ -49,5 +49,5 @@ def stage(String environment) {
 }
 
 def deploy(String environment) {
-  echo "Deployment to ${environment} triggered.."
+  echo "Deployment to ${environment} started.."
 }
