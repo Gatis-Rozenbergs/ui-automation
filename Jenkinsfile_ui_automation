@@ -1,0 +1,53 @@
+pipeline {
+    agent any
+    triggers { 
+        pollSCM('*/1 * * * *') 
+    }
+    stages { 
+        stage('build') {
+            steps {
+                echo "Building application"
+            }
+        }
+
+        stage('staging') {
+            steps {
+                script {
+                    deploy("dev")
+                } 
+            }
+        }
+
+        stage('staging') {
+            steps {
+                script {
+                    stage("dev")
+                } 
+            }
+        }
+
+        stage('production') {
+            steps {
+                script {
+                    deploy("int")
+                } 
+            }
+        }
+
+        stage('production') {
+            steps {
+                script {
+                    stage("int")
+                } 
+            }
+        }
+    }
+}
+
+def stage(String environment) {
+  echo "Running tests to ${environment}"
+}
+
+def deploy(String environment) {
+  echo "Deployment to ${environment} triggered.."
+}

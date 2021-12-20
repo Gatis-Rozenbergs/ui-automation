@@ -3,6 +3,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.*;
 
 @CucumberOptions(
+        strict = true,
         features = "src/test/resources/features",
         glue = {"stepdefs"})
 
