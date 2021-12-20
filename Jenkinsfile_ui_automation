@@ -46,7 +46,7 @@ pipeline {
 
 def stage(String environment) {
   echo "Running tests to ${environment}"
-  sh "docker-compose up"
+  sh "docker-compose up --abort-on-container-exit"
 }
 
 def deploy(String environment) {
