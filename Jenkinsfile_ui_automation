@@ -46,6 +46,7 @@ pipeline {
 
 def stage(String environment) {
   echo "Running tests to ${environment}"
+  sh "docker-compose up"
 }
 
 def deploy(String environment) {
